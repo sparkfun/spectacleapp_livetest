@@ -448,7 +448,7 @@ window.location.href = 'https://sparkfun.github.io/spectacleapp/';
 
 // Save editable project file locally
 function saveCanvas() {
-  var text = utoa($(".canvas").html());
+  var text = encodeFile();
   var filename = document.getElementById('project-name').innerHTML.split("&")[0];
   var blob = new Blob([text], {type: "text/plain"});
   saveAs(blob, filename+".spl");
@@ -1628,3 +1628,37 @@ function escapeHtml(str) {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
 }
+
+// Returns a comma-separated save-file
+function encodeFile(){
+
+var attrString = "";
+
+attrString += $("#project-name").html() + ",";
+attrString += $("#project-decription").html() + ",";
+
+$(".canvas").find(".module").each(function(){
+	attrString += $(this).find(".actions-list").attr("class").split(' ')[1] + ",";	
+	attrString += $(this).find("#mod-nick").html() + ",";	
+		$(this).find(".actions-list").find(".action").each(function(){
+			attrString += $(this).attr("class").split(' ')[1] + ",";	
+			$(this).find("input").each(function(){
+				if($(this).hasClass("radio")){
+					if($(this).attr("data-checked")!=undefined){
+					attrString += "1,";
+					}else{
+					attrString += "0,";
+					}
+				}else if($(this).hasClass("color")){
+					attrString += $(this).attr("value") + ",";
+				}else{
+					attrString += $(this).val() + ",";
+					}
+			});
+		});
+	});
+	
+attrString += "<end>";
+console.log(attrString);
+return(attrString);
+};
