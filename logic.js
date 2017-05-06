@@ -1682,9 +1682,9 @@ function fileBuilder(fileContents){
 	// Insert Boards into Canvas
 	var boardIndex = 0;
 	
-	while(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].childNodes[0].nodeValue){
+	while(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue){
 	
-		switch (xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].childNodes[0].nodeValue) {
+		switch (xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue) {
 		
 			case "light":
 				
