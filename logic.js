@@ -203,7 +203,7 @@ If you want to keep your progress, press Cancel and then Save or Share your proj
 To start a new script, press OK.");
     if(makeSure==true){
     localStorage.setItem("cached", null);
-    window.location.href = 'https://sparkfun.github.io/spectacleapp/';
+    window.location.href = 'https://sparkfun.github.io/spectacleapp_livetest/';
     }else{
       $(".menu").slideToggle(slideDur, function() {
     $(".cross").hide();
