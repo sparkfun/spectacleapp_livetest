@@ -1638,10 +1638,10 @@ attrString += "<title>" + $("#project-name").html() + "</title>\n";
 attrString += "<description>" + $("#project-decription").html() + "</description>\n\n";
 
 $(".canvas").find(".module").each(function(){
-	attrString += "<board>\n\n\t<type>" + $(this).find(".actions-list").attr("class").split(' ')[1] + "</type>\n\n";	
-	attrString += "\t<nickname>" + $(this).find("#mod-nick").html() + "</nickname>\n\n";	
+	attrString += "<board type=\"" + $(this).find(".actions-list").attr("class").split(' ')[1] + "\" nickname=\"";	
+	attrString += $(this).find("#mod-nick").html() + "\">\n\n";	
 		$(this).find(".actions-list").find(".action").each(function(){
-			attrString += "\t\t<action>\n\t\t<type>" + $(this).attr("class").split(' ')[1] + "</type>\n";	
+			attrString += "\t\t<action type=\"" + $(this).attr("class").split(' ')[1] + "\">\n";	
 			$(this).find("input").each(function(){
 				if($(this).hasClass("radio")){
 					if($(this).attr("data-checked")!=undefined){
