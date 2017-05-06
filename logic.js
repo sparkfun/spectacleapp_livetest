@@ -477,10 +477,7 @@ function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
   var reader = new FileReader();
   reader.onload = function(e) {
-  $(".canvas").html(atou(reader.result));
-      $("input[type='color']").spectrum("destroy");
-      $(".sp-replacer").remove(); //sweep away empty shells
-      $("input[type='color']").spectrum(); //rehook the colorpickers
+  fileBuilder(reader.result);
   }
   reader.readAsText(files[0]);
   }
@@ -1671,25 +1668,63 @@ return(attrString);
 // Transmutes a save-file into an editable configuration 
 function fileBuilder(fileContents){
 
+	// Parse the XML formatted save-file
+	parser = new DOMParser();
+    	xmlDoc = parser.parseFromString(fileContents, "text/xml");
 	
-	var validBoards = ["light","button","accel","motion","sound"];
-	var pseudoString = fileContents.split(",");
-	console.log(pseudoString);
-	var configString = "SPEC\n";
-	var boardcnt = 0;
+	// Fill in basic info 
+	changeName(xmlDoc.getElementsByTagName("title")[0].nodeValue);
 	
-	// Extract board names and append to beginning of config string
-	pseudoString.forEach(function(e){
-		var crumb = e;
-		validBoards.forEach(function(x){
-		if(x==crumb){configString+=boardID(x)+"\n"; boardcnt++;};
-		});	
-	});
+	$("#project-decription").html(escapeHtml(xmlDoc.getElementsByTagName("description")[0].nodeValue));
 	
-	// Mark Board Config Section
-	configString+="B\n";
 	
-	// Build board sections
+	// Insert Boards into Canvas
+	var boardIndex = 0;
+	
+	while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].nodeValue){
+	
+		switch (xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].nodeValue) {
+		
+			case "light":
+				
+				$(".add-light").click();
+					
+			break;
+				
+			case "button":
+				
+				$(".add-button").click();
+				
+			break;
+				
+			case "accel":
+				
+				$(".add-accel").click();
+				
+			break;
+				
+			case "motion":
+				
+				$(".add-motion").click();
+				
+			break;
+				
+			case "sound":
+				
+				$(".add-sound").click();
+				
+			break;
+				
+			case "virtual":
+				
+				$(".add-virtual").click();
+				
+			break;
+											
+		}
+	}
+	
+	/*
 	var index = 0;
 	pseudoString.forEach(function(z){		
 	
@@ -2048,4 +2083,6 @@ function fileBuilder(fileContents){
 	//result
 	console.log(configString);
 	return(configString);
+	
+	*/
 }
