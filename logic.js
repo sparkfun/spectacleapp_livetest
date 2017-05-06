@@ -1671,6 +1671,7 @@ function fileBuilder(fileContents){
 	// Parse the XML formatted save-file
 	parser = new DOMParser();
     	xmlDoc = parser.parseFromString(fileContents, "text/xml");
+	console.log(xmlDoc);
 	
 	// Fill in basic info 
 	changeName(xmlDoc.getElementsByTagName("title")[0].nodeValue);
