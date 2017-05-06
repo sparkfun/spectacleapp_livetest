@@ -1641,24 +1641,24 @@ attrString += "<title>" + $("#project-name").html() + "</title>\n";
 attrString += "<description>" + $("#project-decription").html() + "</description>\n\n";
 
 $(".canvas").find(".module").each(function(){
-	attrString += "<board>\n\n<type>" + $(this).find(".actions-list").attr("class").split(' ')[1] + "</type>\n\n";	
-	attrString += "<nickname>" + $(this).find("#mod-nick").html() + "</nickname>\n\n";	
+	attrString += "<board>\n\n\t<type>" + $(this).find(".actions-list").attr("class").split(' ')[1] + "</type>\n\n";	
+	attrString += "\t<nickname>" + $(this).find("#mod-nick").html() + "</nickname>\n\n";	
 		$(this).find(".actions-list").find(".action").each(function(){
-			attrString += "\t<action>\n\t<type>" + $(this).attr("class").split(' ')[1] + "</type>\n";	
+			attrString += "\t\t<action>\n\t<type>" + $(this).attr("class").split(' ')[1] + "</type>\n";	
 			$(this).find("input").each(function(){
 				if($(this).hasClass("radio")){
 					if($(this).attr("data-checked")!=undefined){
-					attrString += "\t<entry>1</entry>\n";
+					attrString += "\t\t<entry>1</entry>\n";
 					}else{
-					attrString += "\t<entry>0</entry>\n";
+					attrString += "\t\t<entry>0</entry>\n";
 					}
 				}else if($(this).hasClass("color")){
-					attrString += "\t<entry>" + $(this).attr("value") + "</entry>\n";
+					attrString += "\t\t<entry>" + $(this).attr("value") + "</entry>\n";
 				}else{
-					attrString += "\t<entry>" + $(this).val() + "</entry>\n";
+					attrString += "\t\t<entry>" + $(this).val() + "</entry>\n";
 					}
 			});
-		attrString += "\t</action>\n\n";
+		attrString += "\t\t</action>\n\n";
 		});
 	attrString += "</board>\n\n";	
 	});
