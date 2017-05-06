@@ -1641,7 +1641,7 @@ attrString += "<title>" + $("#project-name").html() + "</title>\n";
 attrString += "<description>" + $("#project-decription").html() + "</description>\n\n";
 
 $(".canvas").find(".module").each(function(){
-	attrString += "<board><type>" + $(this).find(".actions-list").attr("class").split(' ')[1] + "</type>\n\n";	
+	attrString += "<board>\n\n<type>" + $(this).find(".actions-list").attr("class").split(' ')[1] + "</type>\n\n";	
 	attrString += "<nickname>" + $(this).find("#mod-nick").html() + "</nickname>\n\n";	
 		$(this).find(".actions-list").find(".action").each(function(){
 			attrString += "\t<action>\n\t<type>" + $(this).attr("class").split(' ')[1] + "</type>\n";	
@@ -1660,7 +1660,7 @@ $(".canvas").find(".module").each(function(){
 			});
 		attrString += "\t</action>\n\n";
 		});
-	attrString += "</board>\n";	
+	attrString += "</board>\n\n";	
 	});
 	
 attrString += "\n</config>";
