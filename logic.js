@@ -1722,6 +1722,9 @@ function fileBuilder(fileContents){
 			break;
 											
 		}
+		
+			boardIndex++;
+		
 	}
 	
 	/*
@@ -2085,4 +2088,7 @@ function fileBuilder(fileContents){
 	return(configString);
 	
 	*/
+	
+
+	
 }
