@@ -1644,7 +1644,7 @@ $(".canvas").find(".module").each(function(){
 	attrString += "<board>\n\n\t<type>" + $(this).find(".actions-list").attr("class").split(' ')[1] + "</type>\n\n";	
 	attrString += "\t<nickname>" + $(this).find("#mod-nick").html() + "</nickname>\n\n";	
 		$(this).find(".actions-list").find(".action").each(function(){
-			attrString += "\t\t<action>\n\t<type>" + $(this).attr("class").split(' ')[1] + "</type>\n";	
+			attrString += "\t\t<action>\n\t\t<type>" + $(this).attr("class").split(' ')[1] + "</type>\n";	
 			$(this).find("input").each(function(){
 				if($(this).hasClass("radio")){
 					if($(this).attr("data-checked")!=undefined){
