@@ -1674,17 +1674,17 @@ function fileBuilder(fileContents){
 	console.log(xmlDoc);
 	
 	// Fill in basic info 
-	changeName(xmlDoc.getElementsByTagName("title")[0].nodeValue);
+	changeName(xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue);
 	
-	$("#project-decription").html(escapeHtml(xmlDoc.getElementsByTagName("description")[0].nodeValue));
+	$("#project-decription").html(escapeHtml(xmlDoc.getElementsByTagName("description")[0].childNodes[0].nodeValue));
 	
 	
 	// Insert Boards into Canvas
 	var boardIndex = 0;
 	
-	while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].nodeValue){
+	while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].childNodes[0].nodeValue){
 	
-		switch (xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].nodeValue) {
+		switch (xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].childNodes[0].nodeValue) {
 		
 			case "light":
 				
