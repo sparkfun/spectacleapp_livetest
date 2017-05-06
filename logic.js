@@ -1663,7 +1663,7 @@ $(".canvas").find(".module").each(function(){
 	attrString += "</board>\n";	
 	});
 	
-attrString += "</config>";
+attrString += "\n</config>";
 console.log(attrString);
 return(attrString);
 };
