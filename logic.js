@@ -450,8 +450,8 @@ window.location.href = 'https://sparkfun.github.io/spectacleapp/';
 function saveCanvas() {
   var text = encodeFile();
   var filename = document.getElementById('project-name').innerHTML.split("&")[0];
-  var blob = new Blob([text], {type: "text/plain"});
-  saveAs(blob, filename+".spl");
+  var blob = new Blob([text], {type: "text/xml"});
+  saveAs(blob, filename+".xml");
   pseudoConfig();
 }
 
