@@ -1634,31 +1634,418 @@ function encodeFile(){
 
 var attrString = "";
 
-attrString += $("#project-name").html() + ",";
-attrString += $("#project-decription").html() + ",";
+attrString += "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?> \n\n";	
+	
+attrString += "</config>\n\n";	
+attrString += "<title>" + $("#project-name").html() + "</title>\n";
+attrString += "<description>" + $("#project-decription").html() + "</description>\n\n";
 
 $(".canvas").find(".module").each(function(){
-	attrString += $(this).find(".actions-list").attr("class").split(' ')[1] + ",";	
-	attrString += $(this).find("#mod-nick").html() + ",";	
+	attrString += "<" + $(this).find(".actions-list").attr("class").split(' ')[1] + ">\n";	
+	attrString += "<nickname>" + $(this).find("#mod-nick").html() + "</nickname>\n";	
 		$(this).find(".actions-list").find(".action").each(function(){
-			attrString += $(this).attr("class").split(' ')[1] + ",";	
+			attrString += "\t<action>\n\t<type>" + $(this).attr("class").split(' ')[1] + "</type>\n";	
 			$(this).find("input").each(function(){
 				if($(this).hasClass("radio")){
 					if($(this).attr("data-checked")!=undefined){
-					attrString += "1,";
+					attrString += "\t<entry>1</entry>\n";
 					}else{
-					attrString += "0,";
+					attrString += "\t<entry>0</entry>\n";
 					}
 				}else if($(this).hasClass("color")){
-					attrString += $(this).attr("value") + ",";
+					attrString += "\t<entry>" + $(this).attr("value") + "</entry>\n";
 				}else{
-					attrString += $(this).val() + ",";
+					attrString += "\t<entry>" + $(this).val() + "</entry>\n";
 					}
 			});
+		attrString += "\t</action>\n\n";
 		});
+	attrString += "</" + $(this).find(".actions-list").attr("class").split(' ')[1] + ">\n\n";	
 	});
 	
-attrString += "<end>";
+attrString += "</config>";
 console.log(attrString);
 return(attrString);
 };
+
+// Transmutes a save-file into an editable configuration 
+function fileBuilder(fileContents){
+
+	
+	var validBoards = ["light","button","accel","motion","sound"];
+	var pseudoString = fileContents.split(",");
+	console.log(pseudoString);
+	var configString = "SPEC\n";
+	var boardcnt = 0;
+	
+	// Extract board names and append to beginning of config string
+	pseudoString.forEach(function(e){
+		var crumb = e;
+		validBoards.forEach(function(x){
+		if(x==crumb){configString+=boardID(x)+"\n"; boardcnt++;};
+		});	
+	});
+	
+	// Mark Board Config Section
+	configString+="B\n";
+	
+	// Build board sections
+	var index = 0;
+	pseudoString.forEach(function(z){		
+	
+		switch (z) {
+		
+		// Light Board Translators
+		
+			case "led-rainbow-effect":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
+				configString+="1.4\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="4.0\n";
+				configString+="4.0\n";
+				configString+="1.0\n";
+				configString+="1."+pseudoString[index+4]+"\n";
+				configString+="4."+Math.round(pseudoString[index+5]*2)+"\n";
+				break;
+				
+			case "led-theater-chase":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1,999))+"\n";
+				configString+="1.5\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
+				configString+="4.0\n";
+				configString+="1.0\n";
+				configString+="1."+pseudoString[index+4]+"\n";
+				configString+="4."+Math.round(pseudoString[index+5]*2)+"\n";			
+				break;
+				
+			case "led-scanning-effect":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1,999))+"\n";
+				configString+="1.6\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
+				configString+="4.0\n";
+				configString+="1.0\n";
+				configString+="1."+pseudoString[index+4]+"\n";
+				configString+="4."+Math.round(pseudoString[index+5]*2)+"\n";						
+				break;
+				
+			case "led-twinkle-effect":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1.7\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+4])+"\n"; 
+				configString+="4.0\n";
+				configString+="1."+Math.round(scale(pseudoString[index+7],0,1000,0,59))+"\n";
+				configString+="1."+pseudoString[index+5]+"\n";
+				configString+="4."+Math.round(pseudoString[index+6]*2)+"\n"; // twinkle speed 2ms-2s									
+				break;
+				
+			case "led-lightning-effect":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1.8\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+4])+"\n"; 
+				configString+="4.0\n";
+				configString+="1."+Math.round(scale(pseudoString[index+7],0,1000,0,59))+"\n";
+				configString+="1."+pseudoString[index+5]+"\n";
+				configString+="4."+Math.round(pseudoString[index+6]*2)+"\n"; // lightning speed 2ms-2s									
+				break;
+				
+			case "led-flame-effect":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
+				configString+="1.9\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+5])+"\n"; 
+				configString+="4.0\n";
+				configString+="1.0\n";
+				configString+="1."+pseudoString[index+4]+"\n";
+				configString+="4.0\n";												
+				break;
+				
+			case "led-fade-lights":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1.2\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+4])+"\n"; 
+				configString+="4."+colorConvert(pseudoString[index+5])+"\n"; 
+				configString+="1.0\n";
+				configString+="1."+pseudoString[index+6]+"\n";
+				configString+="4."+Math.round(pseudoString[index+7]*10)+"\n"; // fade step = 1ms-1s									
+				break;
+				
+			case "led-fill-color":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1.3\n";
+				configString+="1."+pseudoString[index+4]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
+				configString+="4.0\n"; 
+				configString+="1."+pseudoString[index+5]+"\n";
+				configString+="1."+pseudoString[index+7]+"\n";
+				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 											
+				break;
+				
+			case "led-light-pixel":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1.1\n";
+				configString+="1."+pseudoString[index+4]+"\n";
+				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
+				configString+="4.0\n"; 
+				configString+="1."+pseudoString[index+5]+"\n";
+				configString+="1."+pseudoString[index+7]+"\n";
+				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 														
+				break;
+				
+		// Button Board Translators 
+				
+			case "button-action-on-press":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.0\n";
+				configString+="1."+pseudoString[index+1]+"\n";
+				break;
+				
+			case "button-action-on-release":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.1\n";
+				configString+="1."+pseudoString[index+1]+"\n";					
+				break;
+				
+			case "button-action-on-press-and-release":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.2\n";
+				configString+="1."+pseudoString[index+1]+"\n";
+				break;
+				
+			case "button-action-while-holding":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.3\n";
+				configString+="1."+pseudoString[index+1]+"\n";
+				break;
+				
+			case "button-latch-on-latch-off":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.4\n";
+				configString+="1."+pseudoString[index+1]+"\n";
+				break;
+				
+		//Intertia Board Translators
+				
+			case "inertia-sense-motion":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+6]+"\n";
+				if(pseudoString[index+4]!=0){ // MOVE radio button
+					configString+="1.0\n"; // Active
+				}else{
+					configString+="1.1\n"; // Inactive
+				}
+				if(pseudoString[index+2]!=0){ // IF radio button
+					configString+="1.1\n"; // Momentary
+				}else{
+					configString+="1.0\n"; // NO Momentary
+				}				
+				break;
+				
+			case "inertia-sense-orientation":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+10]+"\n";
+				if(pseudoString[index+4]!=0){configString+="1.2\n";} // A
+				if(pseudoString[index+5]!=0){configString+="1.3\n";} // B
+				if(pseudoString[index+6]!=0){configString+="1.4\n";} // C
+				if(pseudoString[index+7]!=0){configString+="1.5\n";} // D
+				if(pseudoString[index+8]!=0){configString+="1.6\n";} // TOP
+				if(pseudoString[index+9]!=0){configString+="1.7\n";} // BOTTOM
+				if(pseudoString[index+2]!=0){ // IF radio button
+					configString+="1.1\n"; // Momentary
+				}else{
+					configString+="1.0\n"; // NO Momentary
+				}								
+				break;
+				
+			case "inertia-measure-acceleration":
+				configString+="n\n"; // new behavior begin			
+				configString+="1."+pseudoString[index+5]+"\n";
+				if(pseudoString[index+2]!=0){configString+="1.9\n";} // A-B
+				if(pseudoString[index+3]!=0){configString+="1.8\n";} // C-D
+				if(pseudoString[index+4]!=0){configString+="1.10\n";} // TOP-BOTTOM
+				configString+="1.0\n"; // NO Momentary
+				break;
+				
+		// Motion Board Translators
+				
+			case "motor-toggle-position":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="1.1\n";
+				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
+				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1000,2000))+"\n"; 
+				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
+				configString+="4."+Math.round(pseudoString[index+6]*1000)+"\n"; 																		
+				break;
+				
+			case "motor-sweep-and-return":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="1.0\n";
+				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
+				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1000,2000))+"\n"; 
+				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
+				configString+="4."+Math.round(pseudoString[index+6]*1000)+"\n"; 																					
+				break;
+				
+			case "motor-wag":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="1.2\n";
+				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
+				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1000,2000))+"\n"; 
+				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
+				configString+="4."+Math.round(pseudoString[index+6]*1000)+"\n"; 																					
+				break;
+				
+			case "motor-go-to-position":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				configString+="1.3\n";
+				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
+				configString+="2.0\n";
+				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
+				configString+="4.0\n"; 																					
+				break;
+				
+		// Sound Board Translators
+				
+			case "sound-play-sound":
+				configString+="n\n"; // new behavior begin
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
+				configString+="1."+pseudoString[index+4]+"\n";
+				configString+="1.0\n";
+				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 
+				configString+="4."+Math.round(pseudoString[index+5]*1000)+"\n"; 
+				break;
+					
+		// New Board Markers
+		
+			case "light":
+				configString+="N\n";
+				break;
+				
+			case "button":
+				configString+="N\n";
+				break;
+				
+			case "accel":
+				configString+="N\n";
+				break;
+				
+			case "motion":
+				configString+="N\n";
+				break;
+				
+			case "sound":
+				configString+="N\n";
+				break;
+				
+			// Virtual Board Actions	
+				
+			case "virtual-invert-filter":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.0\n";
+				configString+="1."+pseudoString[index+3]+"\n";
+				break;
+	
+			case "virtual-both-active-filter":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.1\n";
+				configString+="1."+pseudoString[index+3]+"\n";		
+				configString+="1."+pseudoString[index+4]+"\n";		
+				break;
+	
+			case "virtual-channel-combiner":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.2\n";
+				configString+="1."+pseudoString[index+3]+"\n";		
+				configString+="1."+pseudoString[index+4]+"\n";						
+				break;
+	
+			case "virtual-difference-detector":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.3\n";
+				configString+="1."+pseudoString[index+3]+"\n";		
+				configString+="1."+pseudoString[index+4]+"\n";						
+				break;
+	
+			case "virtual-random-input":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.5\n";
+				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 	
+				configString+="4.250\n"; 											
+				break;
+	
+			case "virtual-periodic-input":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.6\n";
+				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 	
+				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 					
+				break;
+	
+			case "virtual-sustained-input":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+2]+"\n";
+				configString+="1.4\n";
+				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 				
+				break;
+	
+			case "virtual-constant-input":
+				configString+="V\n";
+				configString+="1."+pseudoString[index+1]+"\n";
+				configString+="1.7\n";
+				configString+="2."+Math.round(pseudoString[index+2])+"\n"; 								
+				break;			
+		
+		}
+		index++;
+	});
+
+	configString+="Y\nX\n";	
+	//result
+	console.log(configString);
+	return(configString);
+}
