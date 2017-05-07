@@ -1883,15 +1883,15 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	var thisInput = $(freshAction).find("input")[entryIndex];
 		
 		if($(thisInput).hasClass("radio")){
-					if( xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue == "1" ){
+					if( xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue == "1" ){
 					$(thisInput).attr("data-checked"); //give attr
 					}else{
 					//remove attr
 					$(thisInput).attr("");}
 				}else if($(thisInput).hasClass("color")){
-					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
+					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue);
 				}else{
-					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
+					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue);
 					}
 	entryIndex++	
 	};
