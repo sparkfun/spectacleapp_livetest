@@ -1882,6 +1882,8 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	
 	if(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild != null){
 	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild.nodeValue);	
+	}else{
+	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild);	
 	}
 		
 	var thisInput = $(freshAction).find("input")[entryIndex];
