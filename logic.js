@@ -1880,7 +1880,7 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	
 	while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex] != undefined) {		
 	
-	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[1]);	
+	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue);	
 		
 	var thisInput = $(freshAction).find("input")[entryIndex];
 		
