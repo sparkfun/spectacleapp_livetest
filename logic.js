@@ -1784,7 +1784,7 @@ function buildButton(nickName){
     else {
     newModule = $(buttonModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
-	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	$(newModule).find("#mod-nick").html(nickName);
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
 	
@@ -1797,7 +1797,7 @@ function buildAccel(nickName){
     else {
     newModule = $(accelModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
-	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	$(newModule).find("#mod-nick").html(nickName);
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
 	
@@ -1810,7 +1810,7 @@ function buildMotion(nickName){
     else {
     newModule = $(motionModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
-	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	$(newModule).find("#mod-nick").html(nickName);
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
 	
@@ -1823,7 +1823,7 @@ function buildAudio(nickName){
     else {
     newModule = $(soundModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
-	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	$(newModule).find("#mod-nick").html(nickName);
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);	
 };
@@ -1838,7 +1838,7 @@ function buildVirtual(nickName){
     else {
     newModule = $(virtualModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
-	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	$(newModule).find("#mod-nick").html(nickName);
 	};
 };
 
