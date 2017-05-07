@@ -1880,20 +1880,20 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	
 	while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex] != undefined) {		
 	
-	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);	
+	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].childNodes[0].nodeValue);	
 		
 	var thisInput = $(freshAction).find("input")[entryIndex];
 		
 		if($(thisInput).hasClass("radio")){
-					if( xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue == "1" ){
+					if( xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].childNodes[0].nodeValue == "1" ){
 					$(thisInput).attr("data-checked"); //give attr
 					}else{
 					//remove attr
 					$(thisInput).attr("");}
 				}else if($(thisInput).hasClass("color")){
-					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);
+					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].childNodes[0].nodeValue);
 				}else{
-					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);
+					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].childNodes[0].nodeValue);
 					}
 	entryIndex++	
 	};
