@@ -1850,7 +1850,7 @@ function buildAction(actionName, boardIndex) {
 	$(actionSpacer).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
 	var shortlist = "";
 	// Update board view actions lists
-	if( $(actionsList).find(".action").length){
+	if( $(actionsList).children(".action").length){
 	 $(actionsList).children(".action").each(function(){
 		var actionname = $(this).attr("class").split(" ")[1];
 		var firstword = actionname.split("-")[0];
