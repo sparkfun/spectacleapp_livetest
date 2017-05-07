@@ -1881,23 +1881,23 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex] != undefined) {		
 	
 	if(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild != null){
-	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild.nodeValue);	
+	var entryVal = xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild.nodeValue;	
 	}else{
-	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild);	
+	var entryVal = xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild;	
 	}
 		
 	var thisInput = $(freshAction).find("input")[entryIndex];
 		
 		if($(thisInput).hasClass("radio")){
-					if( xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue == "1" ){
+					if(entryVal == "1" ){
 					$(thisInput).attr("data-checked"); //give attr
 					}else{
 					//remove attr
 					$(thisInput).attr("");}
 				}else if($(thisInput).hasClass("color")){
-					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);
+					$(thisInput).attr("value", entryVal);
 				}else{
-					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);
+					$(thisInput).val(entryVal);
 					}
 	entryIndex++	
 	};
