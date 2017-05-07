@@ -1771,7 +1771,7 @@ function buildLight(nickName){
     else {
     newModule = $(lightModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
-	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	$(newModule).find("#mod-nick").html(nickName);
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
 	
