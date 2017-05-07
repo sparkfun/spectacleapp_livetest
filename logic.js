@@ -1835,8 +1835,9 @@ function buildVirtual(nickName){
 function buildAction(actionName, boardIndex) {
 	
 	console.log("building...");
-	console.log(actionName);
+	
 	newAction = window[actionName];
+	console.log(newAction);
 	var freshAction = $(newAction).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
 	var actionsList = $(".module").eq(boardIndex).find(".actions-list")[0];
 	// Get rid of the action spacer which is now in the middle of the list
