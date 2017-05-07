@@ -1694,7 +1694,7 @@ function fileBuilder(fileContents){
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
 					actionIndex = actionIndex+2;
 				}
 			break;
@@ -1704,7 +1704,7 @@ function fileBuilder(fileContents){
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
 					actionIndex = actionIndex+2;
 				}			
 			break;
@@ -1714,7 +1714,7 @@ function fileBuilder(fileContents){
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
 					actionIndex = actionIndex+2;
 				}			
 			break;
@@ -1724,7 +1724,7 @@ function fileBuilder(fileContents){
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
 					actionIndex = actionIndex+2;
 				}			
 			break;
@@ -1734,7 +1734,7 @@ function fileBuilder(fileContents){
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
 					actionIndex = actionIndex+2;
 				}			
 			break;
@@ -1744,7 +1744,7 @@ function fileBuilder(fileContents){
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
 					actionIndex = actionIndex+2;
 				}				
 			break;
@@ -1839,7 +1839,7 @@ function buildVirtual(nickName){
 	};
 };
 
-function buildAction(actionName, boardIndex) {
+function buildAction(actionName, boardIndex, actionIndex) {
 	
 	console.log("building...");
 	
@@ -1874,6 +1874,27 @@ function buildAction(actionName, boardIndex) {
 	$(".act-menu").hide();
 	$("blank-foot").hide();
 	$("actions-foot").show();
+	
+	// Fill in Action Details
+	var entryIndex = 0;
+	
+	while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex] != undefined) {		
+	
+	var thisInput = $(freshAction).find("input")[entryIndex];
+		
+		if($(thisInput).hasClass("radio")){
+					if( xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue == "1" ){
+					$(thisInput).attr("data-checked"); //give attr
+					}else{
+					//remove attr
+					$(thisInput).attr("");}
+				}else if($(thisInput).hasClass("color")){
+					$(thisInput).attr("value", getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
+				}else{
+					$(thisInput).val(getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
+					}
+	entryIndex++	
+	};
 };
 
 function actionTranslate(inName){
