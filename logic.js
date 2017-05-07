@@ -1846,6 +1846,7 @@ function buildAction(actionName, boardIndex) {
 	var actionsList = $(".module").eq(boardIndex).find(".actions-list")[0];
 	// Get rid of the action spacer which is now in the middle of the list
 	$(actionsList).find(".action-spacer").remove();
+	$(actionsList).find(".add-reminder").hide();
 	// Toss that badboy back onto the end of the list
 	$(actionSpacer).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
 	var shortlist = "";
@@ -1853,6 +1854,7 @@ function buildAction(actionName, boardIndex) {
 	if( $(actionsList).children(".action").length){
 	 $(actionsList).children(".action").each(function(){
 		var actionname = $(this).attr("class").split(" ")[1];
+		console.log($(this));
 		var firstword = actionname.split("-")[0];
 		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
                 if($(this).find(".channel").val() != ""){shortlist += "channel " + $(this).find(".channel").val();}
