@@ -1829,7 +1829,7 @@ function buildAction(actionName, boardIndex) {
 	
 	newAction = window[actionName];
 	var freshAction = $(newAction).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
-	var actionsList = $(".module")[boardIndex].find(".actions-list")[0];
+	var actionsList = $(".module").eq(boardIndex).find(".actions-list")[0];
 	// Get rid of the action spacer which is now in the middle of the list
 	$(actionsList).find(".action-spacer").remove();
 	// Toss that badboy back onto the end of the list
