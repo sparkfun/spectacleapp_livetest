@@ -477,6 +477,7 @@ function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
   var reader = new FileReader();
   reader.onload = function(e) {
+  $(".module").remove();	  
   fileBuilder(reader.result);
       $("input[type='color']").spectrum("destroy");
       $(".sp-replacer").remove(); //sweep away empty shells
