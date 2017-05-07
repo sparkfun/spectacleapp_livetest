@@ -1702,45 +1702,50 @@ function fileBuilder(fileContents){
 			case "button":	
 				buildButton(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
-					actionIndex++;
-				}				
+					actionIndex = actionIndex+2;
+				}			
 			break;
 				
 			case "accel":				
 				buildAccel(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
-					actionIndex++;
-				}				
+					actionIndex = actionIndex+2;
+				}			
 			break;
 				
 			case "motion":				
 				buildMotion(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
-					actionIndex++;
-				}				
+					actionIndex = actionIndex+2;
+				}			
 			break;
 				
 			case "sound":			
 				buildAudio(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
-					actionIndex++;
-				}				
+					actionIndex = actionIndex+2;
+				}			
 			break;
 				
 			case "virtual":			
 				buildVirtual(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
-					actionIndex++;
+					actionIndex = actionIndex+2;
 				}				
 			break;
 											
