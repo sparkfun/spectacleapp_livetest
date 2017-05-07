@@ -1896,8 +1896,10 @@ function buildAction(actionName, boardIndex, actionIndex) {
 					$(thisInput).attr("");}
 				}else if($(thisInput).hasClass("color")){
 					$(thisInput).attr("value", entryVal);
+					$(thisInput).val(entryVal);
 				}else{
 					$(thisInput).val(entryVal);
+					$(thisInput).html(entryVal);
 					}
 	entryIndex++	
 	};
