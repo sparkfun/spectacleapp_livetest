@@ -1756,7 +1756,7 @@ function fileBuilder(fileContents){
 	}
 	
 	$(".act-menu").hide();
-	
+	$(".actions-list").hide();
 }
 
 /*************** Module Builders ****************/
