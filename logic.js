@@ -1829,12 +1829,12 @@ function buildAction(actionName, boardIndex) {
 	
 	newAction = window[actionName];
 	var freshAction = $(newAction).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
+	var actionsList = $(".module")[boardIndex].find(".actions-list")[0];
 	// Get rid of the action spacer which is now in the middle of the list
-	 $(".module").eq(boardIndex).find(".actions-list")[0].find(".action-spacer").remove();
+	$(actionsList).find(".action-spacer").remove();
 	// Toss that badboy back onto the end of the list
 	$(actionSpacer).clone().appendTo( $(".module")[boardIndex].find(".actions-list")[0] );
 	var shortlist = "";
-	var actionsList = $(".module")[boardIndex].find(".actions-list")[0];
 	// Update board view actions lists
 	if( $(actionsList).find(".action").length){
 	 $(actionsList).find(".action").each(function(){
