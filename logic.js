@@ -1758,6 +1758,8 @@ function fileBuilder(fileContents){
 		
 	}
 	
+	$(".act-list-exit").click();
+	
 	$(".act-menu").hide();
 	$(".actions-list").hide();
 }
