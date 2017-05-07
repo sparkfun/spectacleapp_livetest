@@ -1864,9 +1864,9 @@ function buildAction(actionName, boardIndex) {
     $(freshAction).find("input[type='color']").spectrum();
 };
 
-function actionTranslate(in){
+function actionTranslate(inName){
 	
-	switch (in) {
+	switch (inName) {
 		
 			case "led-rainbow-effect":
 				return "ledRainbowEffect";
