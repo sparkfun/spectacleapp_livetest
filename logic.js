@@ -1833,7 +1833,7 @@ function buildAction(actionName, boardIndex) {
 	// Get rid of the action spacer which is now in the middle of the list
 	$(actionsList).find(".action-spacer").remove();
 	// Toss that badboy back onto the end of the list
-	$(actionSpacer).clone().appendTo( $(".module")[boardIndex].find(".actions-list")[0] );
+	$(actionSpacer).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
 	var shortlist = "";
 	// Update board view actions lists
 	if( $(actionsList).find(".action").length){
