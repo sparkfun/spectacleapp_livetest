@@ -1695,7 +1695,7 @@ function fileBuilder(fileContents){
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex] != undefined){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
-					actionIndex = actionIndex++;
+					actionIndex++;
 				}
 			break;
 				
