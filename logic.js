@@ -1682,12 +1682,12 @@ function fileBuilder(fileContents){
 	// Insert Boards into Canvas
 	var boardIndex = 0;
 	
-	while(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue){
+	while(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[0].nodeValue != 'null'){
 	
 		console.log("...");
-		console.log(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
+		console.log(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[0].nodeValue);
 		
-		switch (xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue) {
+		switch (xmlDoc.getElementsByTagName("board")[boardIndex].attributes[0].nodeValue) {
 		
 			case "light":
 				
