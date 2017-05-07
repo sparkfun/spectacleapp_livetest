@@ -478,6 +478,9 @@ function handleFileSelect(evt) {
   var reader = new FileReader();
   reader.onload = function(e) {
   fileBuilder(reader.result);
+      $("input[type='color']").spectrum("destroy");
+      $(".sp-replacer").remove(); //sweep away empty shells
+      $("input[type='color']").spectrum(); //rehook the colorpickers
   }
   reader.readAsText(files[0]);
   }
@@ -1897,7 +1900,6 @@ function buildAction(actionName, boardIndex, actionIndex) {
 				}else if($(thisInput).hasClass("color")){
 					$(thisInput).attr("value", entryVal);
 					$(thisInput).val(entryVal);
-					$(thisInput).attr("value", $(thisInput).spectrum("get").toHexString(entryVal));
 				}else{
 					$(thisInput).val(entryVal);
 					$(thisInput).html(entryVal);
