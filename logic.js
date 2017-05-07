@@ -1880,7 +1880,9 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	
 	while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex] != undefined) {		
 	
+	if(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild != null){
 	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].firstChild.nodeValue);	
+	}
 		
 	var thisInput = $(freshAction).find("input")[entryIndex];
 		
