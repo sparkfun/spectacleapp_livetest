@@ -1692,7 +1692,9 @@ function fileBuilder(fileContents){
 			case "light":
 				buildLight(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex]);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+					
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}
