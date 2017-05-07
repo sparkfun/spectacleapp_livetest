@@ -1684,6 +1684,9 @@ function fileBuilder(fileContents){
 	
 	while(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue){
 	
+		console.log("...");
+		console.log(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
+		
 		switch (xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue) {
 		
 			case "light":
