@@ -1889,9 +1889,9 @@ function buildAction(actionName, boardIndex, actionIndex) {
 					//remove attr
 					$(thisInput).attr("");}
 				}else if($(thisInput).hasClass("color")){
-					$(thisInput).attr("value", getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
+					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
 				}else{
-					$(thisInput).val(getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
+					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].childNodes[0].nodeValue);
 					}
 	entryIndex++	
 	};
