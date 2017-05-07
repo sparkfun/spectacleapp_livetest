@@ -1851,7 +1851,7 @@ function buildAction(actionName, boardIndex) {
 	var shortlist = "";
 	// Update board view actions lists
 	if( $(actionsList).find(".action").length){
-	 $(actionsList).find(".action").each(function(){
+	 $(actionsList).children(".action").each(function(){
 		var actionname = $(this).attr("class").split(" ")[1];
 		var firstword = actionname.split("-")[0];
 		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
