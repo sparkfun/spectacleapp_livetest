@@ -1691,37 +1691,37 @@ function fileBuilder(fileContents){
 		
 			case "light":
 				
-				$(".add-light").click();
+				buildLight(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 					
 			break;
 				
 			case "button":
 				
-				$(".add-button").click();
+				buildButton(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				
 			break;
 				
 			case "accel":
 				
-				$(".add-accel").click();
+				buildAccel(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				
 			break;
 				
 			case "motion":
 				
-				$(".add-motion").click();
+				buildMotion(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				
 			break;
 				
 			case "sound":
 				
-				$(".add-sound").click();
+				buildAudio(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				
 			break;
 				
 			case "virtual":
 				
-				$(".add-virtual").click();
+				buildVirtual(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				
 			break;
 											
@@ -2096,3 +2096,84 @@ function fileBuilder(fileContents){
 
 	
 }
+
+/*************** Module Builders ****************/
+
+function buildLight(nickName){
+    var newModule;	
+    if (typeof $(".canvas").children('.module').slice(-1)[0] !== 'undefined') {
+    newModule = $(lightModuleProto).clone().insertAfter($(".canvas").children('.module').slice(-1)[0]);}
+    else {
+    newModule = $(lightModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
+	$(newModule).find("#mod-nick").val(nickName);
+	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	// Fix virtual module position to bottom of document	
+        $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
+	};
+};
+
+function buildButton(nickName){
+    var newModule;
+    if (typeof $(".canvas").children('.module').slice(-1)[0] !== 'undefined') {
+    newModule = $(buttonModuleProto).clone().insertAfter($(".canvas").children('.module').slice(-1)[0]);}
+    else {
+    newModule = $(buttonModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
+	$(newModule).find("#mod-nick").val(nickName);
+	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	// Fix virtual module position to bottom of document	
+        $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
+	};
+};
+
+function buildAccel(nickName){
+    var newModule;	
+    if (typeof $(".canvas").children('.module').slice(-1)[0] !== 'undefined') {
+    newModule = $(accelModuleProto).clone().insertAfter($(".canvas").children('.module').slice(-1)[0]);}
+    else {
+    newModule = $(accelModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
+	$(newModule).find("#mod-nick").val(nickName);
+	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	// Fix virtual module position to bottom of document	
+        $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
+	};
+};
+
+function buildMotion(nickName){
+    var newModule;
+    if (typeof $(".canvas").children('.module').slice(-1)[0] !== 'undefined') {
+    newModule = $(motionModuleProto).clone().insertAfter($(".canvas").children('.module').slice(-1)[0]);}
+    else {
+    newModule = $(motionModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
+	$(newModule).find("#mod-nick").val(nickName);
+	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	// Fix virtual module position to bottom of document	
+        $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
+	};
+};
+
+function buildAudio(nickName){
+    var newModule;
+    if (typeof $(".canvas").children('.module').slice(-1)[0] !== 'undefined') {
+    newModule = $(soundModuleProto).clone().insertAfter($(".canvas").children('.module').slice(-1)[0]);}
+    else {
+    newModule = $(soundModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
+	$(newModule).find("#mod-nick").val(nickName);
+	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	// Fix virtual module position to bottom of document	
+        $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
+	};
+};
+
+function buildVirtual(nickName){
+    var newModule;
+	if (typeof $(".canvas").children('.virtual-module').slice(-1)[0] !== 'undefined') {
+		alert("There's already a virtual board attached to this project.\n\n You can only add one virtual board to your project, but that board can contain as many actions as you like!");
+	}else{
+    if (typeof $(".canvas").children('.module').slice(-1)[0] !== 'undefined') {
+    newModule = $(virtualModuleProto).clone().insertAfter($(".canvas").children('.module').slice(-1)[0]);}
+    else {
+    newModule = $(virtualModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
+	$(newModule).find("#mod-nick").val(nickName);
+	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
+	};
+};
