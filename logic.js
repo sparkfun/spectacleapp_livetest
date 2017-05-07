@@ -1701,51 +1701,51 @@ function fileBuilder(fileContents){
 				
 			case "button":	
 				buildButton(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 1;
-				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
-					actionIndex = actionIndex+2;
-				}			
+				var actionIndex = 0;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue);
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex] != undefined){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
+					actionIndex++;
+				}		
 			break;
 				
 			case "accel":				
 				buildAccel(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 1;
-				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
-					actionIndex = actionIndex+2;
-				}			
+				var actionIndex = 0;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue);
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex] != undefined){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
+					actionIndex++;
+				}		
 			break;
 				
 			case "motion":				
 				buildMotion(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 1;
-				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
-					actionIndex = actionIndex+2;
+				var actionIndex = 0;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue);
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex] != undefined){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
+					actionIndex++;
 				}			
 			break;
 				
 			case "sound":			
 				buildAudio(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 1;
-				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
-					actionIndex = actionIndex+2;
+				var actionIndex = 0;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue);
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex] != undefined){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
+					actionIndex++;
 				}			
 			break;
 				
 			case "virtual":			
 				buildVirtual(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 1;
-				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
-					actionIndex = actionIndex+2;
+				var actionIndex = 0;
+				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue);
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex] != undefined){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
+					actionIndex++;
 				}				
 			break;
 											
