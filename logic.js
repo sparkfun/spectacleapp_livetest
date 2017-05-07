@@ -1691,54 +1691,54 @@ function fileBuilder(fileContents){
 		
 			case "light":
 				buildLight(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
+				var actionIndex = 1;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}
 			break;
 				
 			case "button":	
 				buildButton(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
+				var actionIndex = 1;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}				
 			break;
 				
 			case "accel":				
 				buildAccel(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
+				var actionIndex = 1;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}				
 			break;
 				
 			case "motion":				
 				buildMotion(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
+				var actionIndex = 1;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}				
 			break;
 				
 			case "sound":			
 				buildAudio(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
+				var actionIndex = 1;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}				
 			break;
 				
 			case "virtual":			
 				buildVirtual(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
+				var actionIndex = 1;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}				
 			break;
