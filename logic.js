@@ -1755,6 +1755,8 @@ function fileBuilder(fileContents){
 		
 	}
 	
+	$(".act-menu").hide();
+	
 }
 
 /*************** Module Builders ****************/
