@@ -1869,6 +1869,9 @@ function buildAction(actionName, boardIndex) {
 	}
 	// For some reason iOS misses this hook on dynamically generated elements so we re-assert
     $(freshAction).find("input[type='color']").spectrum();
+	$(".act-menu").hide();
+	$("blank-foot").hide();
+	$("actions-foot").show();
 };
 
 function actionTranslate(inName){
