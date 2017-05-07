@@ -1895,8 +1895,8 @@ function buildAction(actionName, boardIndex, actionIndex) {
 					//remove attr
 					$(thisInput).attr("");}
 				}else if($(thisInput).hasClass("color")){
-					$(thisInput).attr("value", entryVal);
 					$(thisInput).val(entryVal);
+					$(thisInput).attr("value", $(thisInput).spectrum("get").toHexString());
 				}else{
 					$(thisInput).val(entryVal);
 					$(thisInput).html(entryVal);
