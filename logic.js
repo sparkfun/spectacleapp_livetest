@@ -2174,5 +2174,5 @@ function buildVirtual(nickName){
     newModule = $(virtualModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
-
+	};
 };
