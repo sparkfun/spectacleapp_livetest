@@ -1828,7 +1828,7 @@ function buildVirtual(nickName){
 function buildAction(actionName, boardIndex) {
 	
 	newAction = window[actionName];
-	var freshAction = $(newAction).clone().appendTo( $(".module")[boardIndex].find(".actions-list")[0] );
+	var freshAction = $(newAction).clone().appendTo($(".module")[boardIndex].find(".actions-list"));
 	// Get rid of the action spacer which is now in the middle of the list
 	$(".module")[boardIndex].find(".actions-list")[0].find(".action-spacer").remove();
 	// Toss that badboy back onto the end of the list
