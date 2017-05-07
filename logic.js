@@ -1691,11 +1691,11 @@ function fileBuilder(fileContents){
 		
 			case "light":
 				buildLight(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				var actionIndex = 1;
+				var actionIndex = 0;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
-					actionIndex = actionIndex+2;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex] != undefined){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].attributes[0].nodeValue, boardIndex, actionIndex);	
+					actionIndex = actionIndex++;
 				}
 			break;
 				
