@@ -1893,10 +1893,10 @@ function buildAction(actionName, boardIndex, actionIndex) {
 		
 		if($(thisInput).hasClass("radio")){
 					if(entryVal == "1" ){
-					$(thisInput).attr("data-checked"); //give attr
+					$(thisInput).click(); //give attr
 					}else{
 					//remove attr
-					$(thisInput).attr("");}
+					}
 				}else if($(thisInput).hasClass("color")){
 					$(thisInput).attr("value", entryVal);
 					$(thisInput).val(entryVal);
