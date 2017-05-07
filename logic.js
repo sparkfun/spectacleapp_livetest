@@ -1834,9 +1834,10 @@ function buildAction(actionName, boardIndex) {
 	// Toss that badboy back onto the end of the list
 	$(actionSpacer).clone().appendTo( $(".module")[boardIndex].find(".actions-list")[0] );
 	var shortlist = "";
+	var actionsList = $(".module")[boardIndex].find(".actions-list")[0];
 	// Update board view actions lists
-	if( $(".module").eq(boardIndex).find(".actions-list")[0].find(".action").length){
-	 $(".module").eq(boardIndex).find(".actions-list")[0].find(".action").each(function(){
+	if( $(actionsList).find(".action").length){
+	 $(actionsList).find(".action").each(function(){
 		var actionname = $(this).attr("class").split(" ")[1];
 		var firstword = actionname.split("-")[0];
 		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
@@ -1844,11 +1845,11 @@ function buildAction(actionName, boardIndex) {
 		else{shortlist += "unspecified channel";}
 		shortlist += "\n";
 	});
-	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").html(shortlist);
-	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();}
+	 $(actionsList).closest(".module").find("#mod-acts").html(shortlist);
+	 $(actionsList).closest(".module").find("#mod-acts").keyup();}
 	else{
-	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").html("No Actions Assigned");
-	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();			
+	 $(actionsList).closest(".module").find("#mod-acts").html("No Actions Assigned");
+	 $(actionsList).closest(".module").find("#mod-acts").keyup();			
 	}
 	// For some reason iOS misses this hook on dynamically generated elements so we re-assert
     $(freshAction).find("input[type='color']").spectrum();
