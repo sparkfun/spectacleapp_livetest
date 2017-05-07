@@ -1693,7 +1693,7 @@ function fileBuilder(fileContents){
 				buildLight(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex = actionIndex+2;
 				}
@@ -1703,7 +1703,7 @@ function fileBuilder(fileContents){
 				buildButton(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex = actionIndex+2;
 				}			
@@ -1713,7 +1713,7 @@ function fileBuilder(fileContents){
 				buildAccel(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex = actionIndex+2;
 				}			
@@ -1723,7 +1723,7 @@ function fileBuilder(fileContents){
 				buildMotion(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex = actionIndex+2;
 				}			
@@ -1733,7 +1733,7 @@ function fileBuilder(fileContents){
 				buildAudio(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex = actionIndex+2;
 				}			
@@ -1743,7 +1743,7 @@ function fileBuilder(fileContents){
 				buildVirtual(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex] != undefined){
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex = actionIndex+2;
 				}				
