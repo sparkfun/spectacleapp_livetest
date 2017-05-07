@@ -2109,7 +2109,7 @@ function buildLight(nickName){
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
-	};
+	
 };
 
 function buildButton(nickName){
@@ -2122,7 +2122,7 @@ function buildButton(nickName){
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
-	};
+	
 };
 
 function buildAccel(nickName){
@@ -2135,7 +2135,7 @@ function buildAccel(nickName){
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
-	};
+	
 };
 
 function buildMotion(nickName){
@@ -2148,7 +2148,7 @@ function buildMotion(nickName){
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
 	// Fix virtual module position to bottom of document	
         $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
-	};
+	
 };
 
 function buildAudio(nickName){
@@ -2160,8 +2160,7 @@ function buildAudio(nickName){
 	$(newModule).find("#mod-nick").val(nickName);
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
 	// Fix virtual module position to bottom of document	
-        $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);
-	};
+        $(".virtual-module").insertAfter($(".canvas").children('.module').slice(-1)[0]);	
 };
 
 function buildVirtual(nickName){
@@ -2175,5 +2174,5 @@ function buildVirtual(nickName){
     newModule = $(virtualModuleProto).clone().insertAfter($(".canvas").children('.project-info-module').slice(-1)[0]);};
 	$(newModule).find("#mod-nick").val(nickName);
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
-	};
+
 };
