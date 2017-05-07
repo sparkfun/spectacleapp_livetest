@@ -1692,48 +1692,48 @@ function fileBuilder(fileContents){
 			case "light":
 				buildLight(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
 				}
 			break;
 				
 			case "button":	
 				buildButton(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
 				}				
 			break;
 				
 			case "accel":				
 				buildAccel(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
 				}				
 			break;
 				
 			case "motion":				
 				buildMotion(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
 				}				
 			break;
 				
 			case "sound":			
 				buildAudio(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
 				}				
 			break;
 				
 			case "virtual":			
 				buildVirtual(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
 				var actionIndex = 0;
-				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
-					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[1].attributes[0].nodeValue, boardIndex);	
 				}				
 			break;
 											
