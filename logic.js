@@ -1828,15 +1828,15 @@ function buildVirtual(nickName){
 function buildAction(actionName, boardIndex) {
 	
 	newAction = window[actionName];
-	var freshAction = $(newAction).clone().appendTo($(".module")[boardIndex].find(".actions-list"));
+	var freshAction = $(newAction).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
 	// Get rid of the action spacer which is now in the middle of the list
-	$(".module")[boardIndex].find(".actions-list")[0].find(".action-spacer").remove();
+	 $(".module").eq(boardIndex).find(".actions-list")[0].find(".action-spacer").remove();
 	// Toss that badboy back onto the end of the list
 	$(actionSpacer).clone().appendTo( $(".module")[boardIndex].find(".actions-list")[0] );
 	var shortlist = "";
 	// Update board view actions lists
-	if($(".module")[boardIndex].find(".actions-list")[0].find(".action").length){
-	$(".module")[boardIndex].find(".actions-list")[0].find(".action").each(function(){
+	if( $(".module").eq(boardIndex).find(".actions-list")[0].find(".action").length){
+	 $(".module").eq(boardIndex).find(".actions-list")[0].find(".action").each(function(){
 		var actionname = $(this).attr("class").split(" ")[1];
 		var firstword = actionname.split("-")[0];
 		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
@@ -1844,11 +1844,11 @@ function buildAction(actionName, boardIndex) {
 		else{shortlist += "unspecified channel";}
 		shortlist += "\n";
 	});
-	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").html(shortlist);
-	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();}
+	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").html(shortlist);
+	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();}
 	else{
-	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").html("No Actions Assigned");
-	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();			
+	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").html("No Actions Assigned");
+	 $(".module").eq(boardIndex).find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();			
 	}
 	// For some reason iOS misses this hook on dynamically generated elements so we re-assert
     $(freshAction).find("input[type='color']").spectrum();
