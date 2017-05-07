@@ -1694,7 +1694,6 @@ function fileBuilder(fileContents){
 				var actionIndex = 1;
 				console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue);
 				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue != 'null'){
-					
 					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].attributes[0].nodeValue, boardIndex);	
 					actionIndex++;
 				}
@@ -1835,6 +1834,8 @@ function buildVirtual(nickName){
 
 function buildAction(actionName, boardIndex) {
 	
+	console.log("building...");
+	console.log(actionName);
 	newAction = window[actionName];
 	var freshAction = $(newAction).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
 	var actionsList = $(".module").eq(boardIndex).find(".actions-list")[0];
