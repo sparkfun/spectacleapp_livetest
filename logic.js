@@ -1682,7 +1682,7 @@ function fileBuilder(fileContents){
 	// Insert Boards into Canvas
 	var boardIndex = 0;
 	
-	while(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[0] != undefined){
+	while(xmlDoc.getElementsByTagName("board")[boardIndex] != undefined){
 	
 		console.log("...");
 		console.log(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[0].nodeValue);
