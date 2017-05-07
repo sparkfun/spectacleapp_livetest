@@ -1758,8 +1758,6 @@ function fileBuilder(fileContents){
 		
 	}
 	
-	$(".act-list-exit").click();
-	
 	$(".act-menu").hide();
 	$(".actions-list").hide();
 }
@@ -1909,6 +1907,9 @@ function buildAction(actionName, boardIndex, actionIndex) {
 					}
 	entryIndex++	
 	};
+	
+	 $(actionsList).closest(".module").find("#mod-acts").html(shortlist);
+	 $(actionsList).closest(".module").find("#mod-acts").keyup();	
 };
 
 function actionTranslate(inName){
