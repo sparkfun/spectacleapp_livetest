@@ -1836,8 +1836,7 @@ function buildAction(actionName, boardIndex) {
 	
 	console.log("building...");
 	
-	newAction = window[actionName];
-	console.log(newAction);
+	newAction = window[actionTranslate(actionName)];
 	var freshAction = $(newAction).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
 	var actionsList = $(".module").eq(boardIndex).find(".actions-list")[0];
 	// Get rid of the action spacer which is now in the middle of the list
@@ -1863,4 +1862,132 @@ function buildAction(actionName, boardIndex) {
 	}
 	// For some reason iOS misses this hook on dynamically generated elements so we re-assert
     $(freshAction).find("input[type='color']").spectrum();
+};
+
+function actionTranslate(in){
+	
+	switch (in) {
+		
+			case "led-rainbow-effect":
+				return "ledRainbowEffect";
+				break;
+				
+			case "led-theater-chase":
+				return "ledTheaterChase";
+				break;
+				
+			case "led-scanning-effect":
+				return "ledScanningEffect";
+				break;
+				
+			case "led-twinkle-effect":
+				return "ledTwinkleEffect";					
+				break;
+				
+			case "led-lightning-effect":
+				return "ledLightningEffect";				
+				break;
+				
+			case "led-flame-effect":
+				return "ledFlameEffect";				
+				break;
+				
+			case "led-fade-lights":
+				return "ledFade";					
+				break;
+				
+			case "led-fill-color":
+				return "ledFill";						
+				break;
+				
+			case "led-light-pixel":
+				return "ledPixel";										
+				break;
+				
+			case "button-action-on-press":
+				return "buttonPress";
+				break;
+				
+			case "button-action-on-release":
+				return "buttonRelease";
+				break;
+				
+			case "button-action-on-press-and-release":
+				return "buttonClick";
+				break;
+				
+			case "button-action-while-holding":
+				return "buttonHold";
+				break;
+				
+			case "button-latch-on-latch-off":
+				return "buttonLatch";
+				break;
+				
+			case "inertia-sense-motion":
+				return "inertiaMotionSense";
+				break;
+				
+			case "inertia-sense-orientation":
+				return "inertiaOrientationSense";				
+				break;
+				
+			case "inertia-measure-acceleration":
+				return "inertiaMeasureAccel";
+				break;
+
+			case "motor-toggle-position":
+; 				return "motorSweep";													
+				break;
+				
+			case "motor-sweep-and-return":
+ 				return "motorSweepReturn";																
+				break;
+				
+			case "motor-wag":
+				return "motorWag";																	
+				break;
+				
+			case "motor-go-to-position":
+				return "motorGoto";																	
+				break;
+				
+			case "sound-play-sound":
+				return "soundPlay";
+				break;
+				
+			case "virtual-invert-filter":
+				return "virtualInvert";
+				break;
+	
+			case "virtual-both-active-filter":
+				return "virtualAnd";
+				break;
+	
+			case "virtual-channel-combiner":
+				return "virtualOr";		
+				break;
+	
+			case "virtual-difference-detector":
+				return "virtualXor";	
+				break;
+	
+			case "virtual-random-input":
+				return "virtualRandom";						
+				break;
+	
+			case "virtual-periodic-input":
+				return "virtualPeriodic";
+				break;
+	
+			case "virtual-sustained-input":
+				return "virtualSustained";
+				break;
+	
+			case "virtual-constant-input":
+				return "virtualConstant";			
+				break;			
+		
+		}
+	
 };
