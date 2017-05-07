@@ -1900,6 +1900,7 @@ function buildAction(actionName, boardIndex, actionIndex) {
 				}else{
 					$(thisInput).val(entryVal);
 					$(thisInput).html(entryVal);
+					$(thisInput).attr("value", entryVal);
 					}
 	entryIndex++	
 	};
