@@ -1854,7 +1854,6 @@ function buildAction(actionName, boardIndex) {
 	if( $(actionsList).children(".action").length){
 	 $(actionsList).children(".action").each(function(){
 		var actionname = $(this).attr("class").split(" ")[1];
-		console.log($(this));
 		var firstword = actionname.split("-")[0];
 		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
                 if($(this).find(".channel").val() != ""){shortlist += "channel " + $(this).find(".channel").val();}
@@ -1863,6 +1862,7 @@ function buildAction(actionName, boardIndex) {
 	});
 	 $(actionsList).closest(".module").find("#mod-acts").html(shortlist);
 	 $(actionsList).closest(".module").find("#mod-acts").keyup();}
+	 console.log($(actionsList).closest(".module").find("#mod-acts"));
 	else{
 	 $(actionsList).closest(".module").find("#mod-acts").html("No Actions Assigned");
 	 $(actionsList).closest(".module").find("#mod-acts").keyup();			
