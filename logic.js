@@ -1690,39 +1690,51 @@ function fileBuilder(fileContents){
 		switch (xmlDoc.getElementsByTagName("board")[boardIndex].attributes[0].nodeValue) {
 		
 			case "light":
-				
 				buildLight(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-					
+				var actionIndex = 0;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				}
 			break;
 				
-			case "button":
-				
+			case "button":	
 				buildButton(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				
+				var actionIndex = 0;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				}				
 			break;
 				
-			case "accel":
-				
+			case "accel":				
 				buildAccel(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				
+				var actionIndex = 0;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				}				
 			break;
 				
-			case "motion":
-				
+			case "motion":				
 				buildMotion(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				
+				var actionIndex = 0;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				}				
 			break;
 				
-			case "sound":
-				
+			case "sound":			
 				buildAudio(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				
+				var actionIndex = 0;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				}				
 			break;
 				
-			case "virtual":
-				
+			case "virtual":			
 				buildVirtual(xmlDoc.getElementsByTagName("board")[boardIndex].attributes[1].nodeValue);
-				
+				var actionIndex = 0;
+				while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue != 'null'){
+					buildAction(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[0].attributes[0].nodeValue, boardIndex);	
+				}				
 			break;
 											
 		}
@@ -1730,370 +1742,6 @@ function fileBuilder(fileContents){
 			boardIndex++;
 		
 	}
-	
-	/*
-	var index = 0;
-	pseudoString.forEach(function(z){		
-	
-		switch (z) {
-		
-		// Light Board Translators
-		
-			case "led-rainbow-effect":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
-				configString+="1.4\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="4.0\n";
-				configString+="4.0\n";
-				configString+="1.0\n";
-				configString+="1."+pseudoString[index+4]+"\n";
-				configString+="4."+Math.round(pseudoString[index+5]*2)+"\n";
-				break;
-				
-			case "led-theater-chase":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1,999))+"\n";
-				configString+="1.5\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
-				configString+="4.0\n";
-				configString+="1.0\n";
-				configString+="1."+pseudoString[index+4]+"\n";
-				configString+="4."+Math.round(pseudoString[index+5]*2)+"\n";			
-				break;
-				
-			case "led-scanning-effect":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1,999))+"\n";
-				configString+="1.6\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
-				configString+="4.0\n";
-				configString+="1.0\n";
-				configString+="1."+pseudoString[index+4]+"\n";
-				configString+="4."+Math.round(pseudoString[index+5]*2)+"\n";						
-				break;
-				
-			case "led-twinkle-effect":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1.7\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+4])+"\n"; 
-				configString+="4.0\n";
-				configString+="1."+Math.round(scale(pseudoString[index+7],0,1000,0,59))+"\n";
-				configString+="1."+pseudoString[index+5]+"\n";
-				configString+="4."+Math.round(pseudoString[index+6]*2)+"\n"; // twinkle speed 2ms-2s									
-				break;
-				
-			case "led-lightning-effect":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1.8\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+4])+"\n"; 
-				configString+="4.0\n";
-				configString+="1."+Math.round(scale(pseudoString[index+7],0,1000,0,59))+"\n";
-				configString+="1."+pseudoString[index+5]+"\n";
-				configString+="4."+Math.round(pseudoString[index+6]*2)+"\n"; // lightning speed 2ms-2s									
-				break;
-				
-			case "led-flame-effect":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
-				configString+="1.9\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+5])+"\n"; 
-				configString+="4.0\n";
-				configString+="1.0\n";
-				configString+="1."+pseudoString[index+4]+"\n";
-				configString+="4.0\n";												
-				break;
-				
-			case "led-fade-lights":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1.2\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+4])+"\n"; 
-				configString+="4."+colorConvert(pseudoString[index+5])+"\n"; 
-				configString+="1.0\n";
-				configString+="1."+pseudoString[index+6]+"\n";
-				configString+="4."+Math.round(pseudoString[index+7]*10)+"\n"; // fade step = 1ms-1s									
-				break;
-				
-			case "led-fill-color":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1.3\n";
-				configString+="1."+pseudoString[index+4]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
-				configString+="4.0\n"; 
-				configString+="1."+pseudoString[index+5]+"\n";
-				configString+="1."+pseudoString[index+7]+"\n";
-				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 											
-				break;
-				
-			case "led-light-pixel":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1.1\n";
-				configString+="1."+pseudoString[index+4]+"\n";
-				configString+="4."+colorConvert(pseudoString[index+6])+"\n"; 
-				configString+="4.0\n"; 
-				configString+="1."+pseudoString[index+5]+"\n";
-				configString+="1."+pseudoString[index+7]+"\n";
-				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 														
-				break;
-				
-		// Button Board Translators 
-				
-			case "button-action-on-press":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.0\n";
-				configString+="1."+pseudoString[index+1]+"\n";
-				break;
-				
-			case "button-action-on-release":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.1\n";
-				configString+="1."+pseudoString[index+1]+"\n";					
-				break;
-				
-			case "button-action-on-press-and-release":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.2\n";
-				configString+="1."+pseudoString[index+1]+"\n";
-				break;
-				
-			case "button-action-while-holding":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.3\n";
-				configString+="1."+pseudoString[index+1]+"\n";
-				break;
-				
-			case "button-latch-on-latch-off":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.4\n";
-				configString+="1."+pseudoString[index+1]+"\n";
-				break;
-				
-		//Intertia Board Translators
-				
-			case "inertia-sense-motion":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+6]+"\n";
-				if(pseudoString[index+4]!=0){ // MOVE radio button
-					configString+="1.0\n"; // Active
-				}else{
-					configString+="1.1\n"; // Inactive
-				}
-				if(pseudoString[index+2]!=0){ // IF radio button
-					configString+="1.1\n"; // Momentary
-				}else{
-					configString+="1.0\n"; // NO Momentary
-				}				
-				break;
-				
-			case "inertia-sense-orientation":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+10]+"\n";
-				if(pseudoString[index+4]!=0){configString+="1.2\n";} // A
-				if(pseudoString[index+5]!=0){configString+="1.3\n";} // B
-				if(pseudoString[index+6]!=0){configString+="1.4\n";} // C
-				if(pseudoString[index+7]!=0){configString+="1.5\n";} // D
-				if(pseudoString[index+8]!=0){configString+="1.6\n";} // TOP
-				if(pseudoString[index+9]!=0){configString+="1.7\n";} // BOTTOM
-				if(pseudoString[index+2]!=0){ // IF radio button
-					configString+="1.1\n"; // Momentary
-				}else{
-					configString+="1.0\n"; // NO Momentary
-				}								
-				break;
-				
-			case "inertia-measure-acceleration":
-				configString+="n\n"; // new behavior begin			
-				configString+="1."+pseudoString[index+5]+"\n";
-				if(pseudoString[index+2]!=0){configString+="1.9\n";} // A-B
-				if(pseudoString[index+3]!=0){configString+="1.8\n";} // C-D
-				if(pseudoString[index+4]!=0){configString+="1.10\n";} // TOP-BOTTOM
-				configString+="1.0\n"; // NO Momentary
-				break;
-				
-		// Motion Board Translators
-				
-			case "motor-toggle-position":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="1.1\n";
-				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
-				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1000,2000))+"\n"; 
-				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
-				configString+="4."+Math.round(pseudoString[index+6]*1000)+"\n"; 																		
-				break;
-				
-			case "motor-sweep-and-return":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="1.0\n";
-				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
-				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1000,2000))+"\n"; 
-				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
-				configString+="4."+Math.round(pseudoString[index+6]*1000)+"\n"; 																					
-				break;
-				
-			case "motor-wag":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+8],0,1000,1,999))+"\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="1.2\n";
-				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
-				configString+="2."+Math.round(scale(pseudoString[index+7],0,1000,1000,2000))+"\n"; 
-				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
-				configString+="4."+Math.round(pseudoString[index+6]*1000)+"\n"; 																					
-				break;
-				
-			case "motor-go-to-position":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				configString+="1.3\n";
-				configString+="2."+Math.round(scale(pseudoString[index+5],0,1000,1000,2000))+"\n"; 
-				configString+="2.0\n";
-				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 
-				configString+="4.0\n"; 																					
-				break;
-				
-		// Sound Board Translators
-				
-			case "sound-play-sound":
-				configString+="n\n"; // new behavior begin
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="2."+Math.round(scale(pseudoString[index+6],0,1000,1,999))+"\n";
-				configString+="1."+pseudoString[index+4]+"\n";
-				configString+="1.0\n";
-				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 
-				configString+="4."+Math.round(pseudoString[index+5]*1000)+"\n"; 
-				break;
-					
-		// New Board Markers
-		
-			case "light":
-				configString+="N\n";
-				break;
-				
-			case "button":
-				configString+="N\n";
-				break;
-				
-			case "accel":
-				configString+="N\n";
-				break;
-				
-			case "motion":
-				configString+="N\n";
-				break;
-				
-			case "sound":
-				configString+="N\n";
-				break;
-				
-			// Virtual Board Actions	
-				
-			case "virtual-invert-filter":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.0\n";
-				configString+="1."+pseudoString[index+3]+"\n";
-				break;
-	
-			case "virtual-both-active-filter":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.1\n";
-				configString+="1."+pseudoString[index+3]+"\n";		
-				configString+="1."+pseudoString[index+4]+"\n";		
-				break;
-	
-			case "virtual-channel-combiner":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.2\n";
-				configString+="1."+pseudoString[index+3]+"\n";		
-				configString+="1."+pseudoString[index+4]+"\n";						
-				break;
-	
-			case "virtual-difference-detector":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.3\n";
-				configString+="1."+pseudoString[index+3]+"\n";		
-				configString+="1."+pseudoString[index+4]+"\n";						
-				break;
-	
-			case "virtual-random-input":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.5\n";
-				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 	
-				configString+="4.250\n"; 											
-				break;
-	
-			case "virtual-periodic-input":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.6\n";
-				configString+="4."+Math.round(pseudoString[index+4]*1000)+"\n"; 	
-				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 					
-				break;
-	
-			case "virtual-sustained-input":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+2]+"\n";
-				configString+="1.4\n";
-				configString+="4."+Math.round(pseudoString[index+3]*1000)+"\n"; 				
-				break;
-	
-			case "virtual-constant-input":
-				configString+="V\n";
-				configString+="1."+pseudoString[index+1]+"\n";
-				configString+="1.7\n";
-				configString+="2."+Math.round(pseudoString[index+2])+"\n"; 								
-				break;			
-		
-		}
-		index++;
-	});
-
-	configString+="Y\nX\n";	
-	//result
-	console.log(configString);
-	return(configString);
-	
-	*/
-	
-
 	
 }
 
@@ -2175,4 +1823,33 @@ function buildVirtual(nickName){
 	$(newModule).find("#mod-nick").val(nickName);
 	$(newModule).find("#mod-nick").innerHTML = $(newModule).find("#mod-nick").val();
 	};
+};
+
+function buildAction(actionName, boardIndex) {
+	
+	newAction = window[actionName];
+	var freshAction = $(newAction).clone().appendTo( $(".module")[boardIndex].find(".actions-list")[0] );
+	// Get rid of the action spacer which is now in the middle of the list
+	$(".module")[boardIndex].find(".actions-list")[0].find(".action-spacer").remove();
+	// Toss that badboy back onto the end of the list
+	$(actionSpacer).clone().appendTo( $(".module")[boardIndex].find(".actions-list")[0] );
+	var shortlist = "";
+	// Update board view actions lists
+	if($(".module")[boardIndex].find(".actions-list")[0].find(".action").length){
+	$(".module")[boardIndex].find(".actions-list")[0].find(".action").each(function(){
+		var actionname = $(this).attr("class").split(" ")[1];
+		var firstword = actionname.split("-")[0];
+		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
+                if($(this).find(".channel").val() != ""){shortlist += "channel " + $(this).find(".channel").val();}
+		else{shortlist += "unspecified channel";}
+		shortlist += "\n";
+	});
+	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").html(shortlist);
+	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();}
+	else{
+	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").html("No Actions Assigned");
+	$(".module")[boardIndex].find(".actions-list")[0].closest(".module").find("#mod-acts").keyup();			
+	}
+	// For some reason iOS misses this hook on dynamically generated elements so we re-assert
+    $(freshAction).find("input[type='color']").spectrum();
 };
