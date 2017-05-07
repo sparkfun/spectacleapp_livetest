@@ -1878,22 +1878,22 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	// Fill in Action Details
 	var entryIndex = 0;
 	
-	while(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex] != undefined) {		
+	while(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex] != undefined) {		
 	
-	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue);	
+	console.log(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);	
 		
 	var thisInput = $(freshAction).find("input")[entryIndex];
 		
 		if($(thisInput).hasClass("radio")){
-					if( xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue == "1" ){
+					if( xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue == "1" ){
 					$(thisInput).attr("data-checked"); //give attr
 					}else{
 					//remove attr
 					$(thisInput).attr("");}
 				}else if($(thisInput).hasClass("color")){
-					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue);
+					$(thisInput).attr("value", xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);
 				}else{
-					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].childNodes[actionIndex].childNodes[entryIndex].nodeValue);
+					$(thisInput).val(xmlDoc.getElementsByTagName("board")[boardIndex].getElementsByTagName("action")[actionIndex].getElementsByTagName("entry")[entryIndex].nodeValue);
 					}
 	entryIndex++	
 	};
