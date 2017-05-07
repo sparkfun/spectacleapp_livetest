@@ -1861,8 +1861,8 @@ function buildAction(actionName, boardIndex) {
 		shortlist += "\n";
 	});
 	 $(actionsList).closest(".module").find("#mod-acts").html(shortlist);
-	 $(actionsList).closest(".module").find("#mod-acts").keyup();}
-	 console.log($(actionsList).closest(".module").find("#mod-acts"));
+	 $(actionsList).closest(".module").find("#mod-acts").keyup();
+	 console.log($(actionsList).closest(".module").find("#mod-acts"));}
 	else{
 	 $(actionsList).closest(".module").find("#mod-acts").html("No Actions Assigned");
 	 $(actionsList).closest(".module").find("#mod-acts").keyup();			
