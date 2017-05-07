@@ -1854,29 +1854,6 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	$(actionsList).find(".add-reminder").hide();
 	// Toss that badboy back onto the end of the list
 	$(actionSpacer).clone().appendTo( $(".module").eq(boardIndex).find(".actions-list")[0] );
-	var shortlist = "";
-	// Update board view actions lists
-	if( $(actionsList).children(".action").length){
-	 $(actionsList).children(".action").each(function(){
-		var actionname = $(this).attr("class").split(" ")[1];
-		var firstword = actionname.split("-")[0];
-		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
-                if($(this).find(".channel").val() != ""){shortlist += "channel " + $(this).find(".channel").val();}
-		else{shortlist += "unspecified channel";}
-		shortlist += "\n";
-	});
-	 $(actionsList).closest(".module").find("#mod-acts").html(shortlist);
-	 $(actionsList).closest(".module").find("#mod-acts").keyup();
-	 console.log($(actionsList).closest(".module").find("#mod-acts"));}
-	else{
-	 $(actionsList).closest(".module").find("#mod-acts").html("No Actions Assigned");
-	 $(actionsList).closest(".module").find("#mod-acts").keyup();			
-	}
-	// For some reason iOS misses this hook on dynamically generated elements so we re-assert
-    $(freshAction).find("input[type='color']").spectrum();
-	$(".act-menu").hide();
-	$("blank-foot").hide();
-	$("actions-foot").show();
 	
 	// Fill in Action Details
 	var entryIndex = 0;
@@ -1908,8 +1885,30 @@ function buildAction(actionName, boardIndex, actionIndex) {
 	entryIndex++	
 	};
 	
+	// Update board view actions lists
+	var shortlist = "";
+	if( $(actionsList).children(".action").length){
+	 $(actionsList).children(".action").each(function(){
+		var actionname = $(this).attr("class").split(" ")[1];
+		var firstword = actionname.split("-")[0];
+		shortlist += "\u2022" + actionname.replace(/-/g," ").replace(firstword,"") + " on ";
+                if($(this).find(".channel").val() != ""){shortlist += "channel " + $(this).find(".channel").val();}
+		else{shortlist += "unspecified channel";}
+		shortlist += "\n";
+	});	
 	 $(actionsList).closest(".module").find("#mod-acts").html(shortlist);
-	 $(actionsList).closest(".module").find("#mod-acts").keyup();	
+	 $(actionsList).closest(".module").find("#mod-acts").keyup();
+	 console.log($(actionsList).closest(".module").find("#mod-acts"));}
+	else{
+	 $(actionsList).closest(".module").find("#mod-acts").html("No Actions Assigned");
+	 $(actionsList).closest(".module").find("#mod-acts").keyup();			
+	}
+	// For some reason iOS misses this hook on dynamically generated elements so we re-assert
+    $(freshAction).find("input[type='color']").spectrum();
+	$(".act-menu").hide();
+	$("blank-foot").hide();
+	$("actions-foot").show();
+	
 };
 
 function actionTranslate(inName){
