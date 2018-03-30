@@ -277,17 +277,17 @@ $(".cross").click();}
 
 // Handler for "Add Module" navigation action
 $(".add-module").click(function() {
+  $("footer").hide();
   $(".module-list").slideToggle(slideDur, function() {
-    $("footer").hide();
     $("exit-foot").show();
   });
 });
 
 // Module list exit handler
 $(".mod-list-exit").click(function() {
+$("exit-foot").hide();
   $(".module-list").slideToggle(slideDur, function() {
     $("footer").show();
-    $("exit-foot").hide();
   });
 });
 
@@ -309,16 +309,16 @@ while(targetmodule.attr("class").split(' ')[0] != "module"){
 targetmodule = targetmodule.parent();
 };
 window.scrollTo(0, 0);
+$("actions-foot").hide();
 $(targetmodule).find(".act-menu").slideToggle(slideDur, function() {
-    $("actions-foot").hide();
     $("blank-foot").show();
   });
 }));
 
 function hideActMenu(){
+$("blank-foot").hide();
 $(".act-menu:visible").slideToggle(slideDur, function() {
-    $("actions-foot").show();
-    $("blank-foot").hide();	
+    $("actions-foot").show();	
   });
 };
 
@@ -358,10 +358,10 @@ $(document).on("click", ".act-list-exit", (function(){
 
 // Hardware Configure Menu Handler
 $(".config-hw").click(function() {
+    $("footer").hide();
     $(".program-hardware").slideToggle(slideDur, function() {
 	slideNum = 0;
 	progSlideshow();
-    $("footer").hide();
     $("program-foot").show();
   });
   });
@@ -415,17 +415,17 @@ function progSlideshow(){
 
 // Hardware Configure exit handler
 $(".program-pane-exit").click(function() {
+	    $("program-foot").hide();
   $(".program-hardware").slideToggle(slideDur, function() {
 	$("#howtoprogram").find("img").remove();
     $("footer").show();
-    $("program-foot").hide();
   });
 });
 
 // Share Project Menu Handler
 $(".share-you-project").click(function() {
+$("footer").hide();
     $(".share-project").slideToggle(slideDur, function() {
-    $("footer").hide();
     $("share-foot").show();
   });
   });
@@ -435,9 +435,9 @@ $(".share-pane-exit").click(function() {
   $(".share-link").html("");
   if(gapi.auth2.getAuthInstance().isSignedIn.get()){
   $(".save-button-authed").show();}
+  $("share-foot").hide();
   $(".share-project").slideToggle(slideDur, function() {
     $("footer").show();
-    $("share-foot").hide();
   });
 });
 
